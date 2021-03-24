@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import AddTodo from './components/AddTodo'
 import TodoList from './components/TodoList'
-import { Heading, VStack, IconButton   } from "@chakra-ui/react"
+import { Heading, VStack, IconButton, useColorMode   } from "@chakra-ui/react"
 import { FaSun, FaMoon } from "react-icons/fa"
 
 function App() {
+  const { colorMode, toggleColorMode } = useColorMode()
   const [todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos')) || []);
 
   useEffect(() => {
@@ -25,9 +26,10 @@ function App() {
       <IconButton 
         alignSelf="flex-end"
         aria-label="toggle theme" 
-        icon={<FaSun />} 
+        icon={colorMode === "light" ? <FaSun /> : <FaMoon/>} 
         size="lg" 
-        isRound={true} />
+        isRound={true}
+        onClick={toggleColorMode} />
       <Heading 
         mb={8}
         fontWeight="extrabold"
