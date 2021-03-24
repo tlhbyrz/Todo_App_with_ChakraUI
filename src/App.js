@@ -18,6 +18,8 @@ function App() {
         size="2xl"
         bgGradient="linear(to-r, pink.500, pink.300, blue.500)"
         bgClip="text" >Todo Application</Heading>
+
+      <TodoList />  
     </VStack>
   );
 }
